@@ -1,14 +1,17 @@
 ﻿function start(postData, res){
 	console.log("Handler 'start' called"+postData);
-	res.writeHead(200,{"Content-type":"text/plain"});
-	//res.write(postData);
-	res.end(JSON.stringify({data:decodeURI(postData)}));
+	
+	var strreq = decodeURIComponent(postData).substring(5);
+	res.writeHead(200,{"Content-type":"text/javascript"});
+	res.write(strreq);	
+	//res.end(JSON.stringify(strreq));
+	res.end();
 }
 function upload(postData, res){
 	console.log("Handler 'upload' called"+postData);
 	res.writeHead(200,{"Content-type":"text/plain"});
 	res.write("upload!"+postData);
-	res.end({data:postData})
+	res.end()
 }
 
 exports.start = start;
